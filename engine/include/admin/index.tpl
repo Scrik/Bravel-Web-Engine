@@ -24,7 +24,7 @@
 							<div class="space_10px clearfix"></div>
 							[version-error]<font color="#E70024">Ошибка получения версии!</font>[/version-error]
 							[version-normal]<font color="#61B329">Вы используете самую последнюю версию движка!</font>[/version-normal]
-							[version-oldest]<font color="#E70024">Версия движка устарела! Новая: <b>{new-version}</b>. <a target="_blank" href="https://github.com/Accami/Bravel-Web-Engine/releases/download/{new-version}/{new-version}.zip">Скачать</a>.</font>[/version-oldest]
+							[version-oldest]<font color="#E70024">Версия движка устарела! Новая: <b>{new-version}</b>. <a target="_blank" href="https://github.com/Accami/Bravel-Web-Engine/releases/download/BWE-{new-version}/{new-version}.zip">Скачать</a>.</font>[/version-oldest]
 							<div class="space_10px"></div>
 							<a target="_blank" href="http://core.bravel.ru">Официальный сайт</a><br>
 							Автор: <b><a target="_blank" href="http://vk.com/id204403882">Accami</a></b>
