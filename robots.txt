@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /index.php?action=nope-right
+Disallow: /index.php?action=error-404
+Disallow: /activation/
+Disallow: /invite/
+Disallow: /logout/
+Disallow: /admin/
+Disallow: /api/

@@ -1,0 +1,80 @@
+DirectoryIndex index.php
+RewriteEngine On
+
+#################################
+
+RewriteBase /
+ErrorDocument 404 /index.php?action=error-404
+
+# Если движок лежит в папке - пропишите здесь путь.
+# Пример:
+# RewriteBase /PATH/TO/SITE/
+# ErrorDocument 404 /PATH/TO/SITE/index.php?action=error-404
+
+#################################
+
+Options +Indexes
+Options +FollowSymLinks
+
+DefaultLanguage ru
+AddDefaultCharset utf-8
+
+# Rewrites | START #
+
+RewriteRule ^engine/$ index.php?action=nope-right [L]
+RewriteRule ^engine/([^.]+)/$ index.php?action=nope-right [L]
+RewriteRule ^themes/$ index.php?action=nope-right [L]
+RewriteRule ^themes/([^.]+)/$ index.php?action=nope-right [L]
+RewriteRule ^uploads/$ index.php?action=nope-right [L]
+RewriteRule ^uploads/([^.]+)/$ index.php?action=nope-right [L]
+
+RewriteRule ^registration/$ index.php?action=registration [L]
+RewriteRule ^account/$ index.php?action=account [L]
+RewriteRule ^forgot-password/$ index.php?action=forgot-password [L]
+RewriteRule ^feed-back/$ index.php?action=feed-back [L]
+RewriteRule ^statistics/$ index.php?action=statistics [L]
+RewriteRule ^terms/$ index.php?action=terms [L]
+
+RewriteRule ^do/([^/]*)/$ index.php?action=static&url=$1 [L]
+RewriteRule ^logout/([^/]*)/$ index.php?action=logout&url=$1 [L]
+RewriteRule ^page/([^/]*)/$ index.php?page=$1 [L]
+RewriteRule ^news/([^/]*)/$ index.php?action=news&id=$1 [L]
+RewriteRule ^category/([^/]*)/$ index.php?action=category&name=$1 [L]
+RewriteRule ^category/([^/]*)/page/([^/]*)/$ index.php?action=category&name=$1&page=$2 [L]
+RewriteRule ^news/([^/]*)/page/([^/]*)/$ index.php?action=news&id=$1&page=$2 [L]
+RewriteRule ^user/([^/]*)/$ index.php?action=view-user&username=$1 [L]
+RewriteRule ^invite/([^/]*)/$ index.php?action=invite&id=$1 [L]
+RewriteRule ^activation/([^/]*)/([^/]*)/$ index.php?action=activation&code=$1&username=$2 [L]
+
+RewriteRule ^api/crypt/([^/]*)/$ index.php?action=api&module=crypt&password=$1 [L]
+RewriteRule ^api/userCheck/([^/]*)/$ index.php?action=api&module=userCheck&username=$1 [L]
+RewriteRule ^api/userCheck/([^/]*)/([^/]*)/$ index.php?action=api&module=userCheck&username=$1&password=$2 [L]
+
+RewriteRule ^admin/$ index.php?action=admin [L]
+RewriteRule ^admin/configuration/$ index.php?action=admin&section=configuration [L]
+RewriteRule ^admin/optimizer/$ index.php?action=admin&section=optimizer [L]
+RewriteRule ^admin/categories/$ index.php?action=admin&section=categories [L]
+RewriteRule ^admin/category/add/$ index.php?action=admin&section=add-category [L]
+RewriteRule ^admin/news/$ index.php?action=admin&section=news [L]
+RewriteRule ^admin/news/add/$ index.php?action=admin&section=add-news [L]
+RewriteRule ^admin/static/$ index.php?action=admin&section=static [L]
+RewriteRule ^admin/static/add/$ index.php?action=admin&section=add-static [L]
+
+RewriteRule ^admin/news/delete/([^/]*)/$ index.php?action=admin&section=delete-news&id=$1 [L]
+RewriteRule ^admin/news/delete/([^/]*)/yes/$ index.php?action=admin&section=delete-news&id=$1&delete=yes [L]
+RewriteRule ^admin/category/delete/([^/]*)/$ index.php?action=admin&section=delete-category&id=$1 [L]
+RewriteRule ^admin/category/delete/([^/]*)/yes/$ index.php?action=admin&section=delete-category&id=$1&delete=yes [L]
+RewriteRule ^admin/news/nullify/([^/]*)/$ index.php?action=admin&section=nullify-news&id=$1 [L]
+RewriteRule ^admin/news/edit/([^/]*)/$ index.php?action=admin&section=edit-news&id=$1 [L]
+RewriteRule ^admin/static/delete/([^/]*)/$ index.php?action=admin&section=delete-static&id=$1 [L]
+RewriteRule ^admin/static/delete/([^/]*)/yes/$ index.php?action=admin&section=delete-static&id=$1&delete=yes [L]
+RewriteRule ^admin/static/edit/([^/]*)/$ index.php?action=admin&section=edit-static&id=$1 [L]
+RewriteRule ^admin/comments/delete/([^/]*)/$ index.php?action=admin&section=delete-comments&id=$1 [L]
+RewriteRule ^admin/comments/delete/([^/]*)/yes/$ index.php?action=admin&section=delete-comments&id=$1&delete=yes [L]
+
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP/
+RewriteRule ^index\.html$ / [R=301,L]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/
+RewriteRule ^index\.php$ / [R=301,L]
+
+# Rewrites | END #
